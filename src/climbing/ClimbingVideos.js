@@ -1,18 +1,49 @@
 import Carousel from "react-bootstrap/Carousel";
 import { useState, useEffect } from "react";
+import moment from "moment-mini";
 
 const folder_id = "1qVcfzhi7z3IF0j09CUVShQhF4P1ZQ66Q";
+// should be fine to leave this key publicly visibly, you need more auth
+// to actually write to Drive
+const driveAPIKey = "AIzaSyCi7BqCcsqaKXeyiD0gzh__iJxQGidCUfY";
 
 const ClimbingVideos = () => {
-  const [videoUrls, setVideoUrls] = useState([]);
+  const [videoProps, setVideoProps] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const getEmbedUrl = (fileId) => {
-    return `https://drive.google.com/file/d/${fileId}/preview`;
-    // return `https://drive.google.com/uc?export=preview&id=${fileId}`;
+  const loadVideos = async () => {
+    window.gapi.client.setApiKey(driveAPIKey);
+    try {
+      await window.gapi.client.load(
+        "https://content.googleapis.com/discovery/v1/apis/drive/v3/rest"
+      );
+      const response = await window.gapi.client.drive.files.list({
+        pageSize: 150,
+        q: `'${folder_id}' in parents`,
+      });
+      const props = response.result.files.map((file) =>
+        getVideoProperties(file)
+      );
+      props.sort((a, b) => {
+        return a.date.isAfter(b.date) ? -1 : 1;
+      });
+      setVideoProps(props);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
-  const getBoulderGrade = (fileName) => {};
+  const getVideoProperties = (file) => {
+    const url = `https://drive.google.com/uc?export=preview&id=${file.id}`;
+    const grade = `V${file.name.charAt(0)}`;
+
+    const dateStart = file.name.indexOf("_") + 1;
+    const dateEnd = file.name.indexOf("_", dateStart);
+    const dateString = file.name.substring(dateStart, dateEnd);
+    const date = moment(dateString, "YYYYMMDD");
+
+    return { url, grade, date };
+  };
 
   const handleScroll = (newIndex, e) => {
     console.log(newIndex);
@@ -20,59 +51,38 @@ const ClimbingVideos = () => {
   };
 
   useEffect(async () => {
-    const response = await window.gapi.client.drive.files.list({
-      pageSize: 150,
-      q: `'${folder_id}' in parents`,
-    });
-    response.result.files.sort((a, b) => {
-      const aDateStart = a.name.indexOf("_") + 1;
-      const aDateEnd = a.name.indexOf("_", aDateStart);
-      const aDate = a.name.substring(aDateStart, aDateEnd);
-      const bDateStart = b.name.indexOf("_") + 1;
-      const bDateEnd = b.name.indexOf("_", bDateStart);
-      const bDate = b.name.substring(bDateStart, bDateEnd);
-      if (!aDate) {
-        console.log(aDateStart);
-        console.log(a.name);
-      }
-      return aDate > bDate ? 1 : -1;
-    });
-    console.log(response.result.files);
-    const urls = response.result.files.map((file) => getEmbedUrl(file.id));
-    setVideoUrls(urls);
+    window.gapi.load("client", loadVideos);
   }, []);
+
   return (
-    <Carousel onSelect={handleScroll} interval={null} indicators={false}>
-      {videoUrls.map((url, index) => (
-        <Carousel.Item>
-          {/* <video width="700" height="700" controls>
-                            <source src={url} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video> */}
-          <div
-            style={{
-              height: "100%",
-              width: "100%",
-              backgroundColor: "black",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <iframe
-              width="700px"
-              height="700px"
-              //   style={{ margin: "0 0 0 20px", position: "relative" }}
-              src={index == activeIndex ? url : undefined}
-            />
-          </div>
-          {/* <iframe width="700" height="700" src={undefined} style={{backgroundColor: "#" + ((1<<24)*Math.random() | 0).toString(16)}}/> */}
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-          </Carousel.Caption>
-        </Carousel.Item>
-      ))}
-    </Carousel>
+    <>
+      <Carousel onSelect={handleScroll} interval={null} indicators={false}>
+        {videoProps.map((video, index) => (
+          <Carousel.Item key={index} style={{ height: "70vh" }}>
+            <div
+              style={{
+                height: "100%",
+                width: "100%",
+                backgroundColor: "black",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              {index == activeIndex && (
+                <video height={"100%"} controls autoPlay>
+                  <source src={video.url} type="video/mp4" />
+                </video>
+              )}
+            </div>
+            <Carousel.Caption>
+              <h3>Grade: {video.grade}</h3>
+              <h3>Date: {video.date.format("MMM Do, YYYY")}</h3>
+            </Carousel.Caption>
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    </>
   );
 };
 export default ClimbingVideos;
