@@ -7,7 +7,7 @@ function Snake() {
         gameFrame.current.focus();
     }, []);
   return (
-    <iframe frameborder="0" width="100%" height="600px" src="https://replit.com/@Logmilly/Snake?lite=true&outputonly=true" ref={gameFrame}></iframe>
+    <iframe frameborder="0" width="100%" height="1000px" src="https://replit.com/@Logmilly/Snake?lite=true&outputonly=true" ref={gameFrame}></iframe>
   );
 }
 

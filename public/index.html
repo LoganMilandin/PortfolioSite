@@ -28,6 +28,27 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+
+
+
+
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script>
+      /**
+       * Sample JavaScript code for drive.files.list
+       * See instructions for running APIs Explorer code samples locally:
+       * https://developers.google.com/explorer-help/guides/code_samples#javascript
+       */
+    
+      function loadClient() {
+        gapi.client.setApiKey("AIzaSyCi7BqCcsqaKXeyiD0gzh__iJxQGidCUfY");
+        return gapi.client.load("https://content.googleapis.com/discovery/v1/apis/drive/v3/rest")
+            .then(function() { console.log("GAPI client loaded for API"); },
+                  function(err) { console.error("Error loading GAPI client for API", err); });
+      }
+      gapi.load("client", loadClient);
+    </script>
+
     <div id="root"></div>
     <!--
       This HTML file is a template.
