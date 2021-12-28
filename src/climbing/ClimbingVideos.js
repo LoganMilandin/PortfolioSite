@@ -6,6 +6,7 @@ const folder_id = "1qVcfzhi7z3IF0j09CUVShQhF4P1ZQ66Q";
 const ClimbingVideos = () => {
   const [videoUrls, setVideoUrls] = useState([]);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [gapiLoaded, setGapiLoaded] = useState(false);
 
   const getEmbedUrl = (fileId) => {
     return `https://drive.google.com/file/d/${fileId}/preview`;
@@ -19,28 +20,28 @@ const ClimbingVideos = () => {
     setActiveIndex(newIndex);
   };
 
-  useEffect(async () => {
-    const response = await window.gapi.client.drive.files.list({
-      pageSize: 150,
-      q: `'${folder_id}' in parents`,
-    });
-    response.result.files.sort((a, b) => {
-      const aDateStart = a.name.indexOf("_") + 1;
-      const aDateEnd = a.name.indexOf("_", aDateStart);
-      const aDate = a.name.substring(aDateStart, aDateEnd);
-      const bDateStart = b.name.indexOf("_") + 1;
-      const bDateEnd = b.name.indexOf("_", bDateStart);
-      const bDate = b.name.substring(bDateStart, bDateEnd);
-      if (!aDate) {
-        console.log(aDateStart);
-        console.log(a.name);
-      }
-      return aDate > bDate ? 1 : -1;
-    });
-    console.log(response.result.files);
-    const urls = response.result.files.map((file) => getEmbedUrl(file.id));
-    setVideoUrls(urls);
+  useEffect(() => {
+    const loadClient = () => {
+      window.gapi.client.setApiKey("AIzaSyCi7BqCcsqaKXeyiD0gzh__iJxQGidCUfY");
+      window.gapi.client
+        .load("https://content.googleapis.com/discovery/v1/apis/drive/v3/rest")
+        .then(() => setGapiLoaded(true))
+        .catch((e) => console.log("fuck off", e));
+    };
+    window.gapi.load("client", loadClient);
   }, []);
+
+  useEffect(() => {
+    const loadVideos = async () => {
+      const response = await window.gapi.client.drive.files.list({
+        pageSize: 150,
+        q: `'${folder_id}' in parents`,
+      });
+      setVideoUrls(response.result.files.map((file) => getEmbedUrl(file.id)));
+    };
+    gapiLoaded && loadVideos();
+  }, [gapiLoaded]);
+
   return (
     <Carousel onSelect={handleScroll} interval={null} indicators={false}>
       {videoUrls.map((url, index) => (
