@@ -8,7 +8,7 @@ const ContactCard = () => {
   const phoneNumber = "206-335-3057";
   const email = "mi1andin@cs.washington.edu";
   const linkedInUrl = "linkedin.com/in/LoganMilandin";
-  const githubUrl = "https://github.com/LoganMilandin";
+  const githubUrl = "github.com/LoganMilandin";
 
   return (
     <Card sx={{ maxWidth: 400 }}>
@@ -21,7 +21,7 @@ const ContactCard = () => {
           width: "300px",
           margin: "0 auto",
         }}
-        alt="green iguana"
+        alt="me"
       />
       <CardContent>
         <Stack direction="row" spacing={2}>
