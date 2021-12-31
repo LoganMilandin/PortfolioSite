@@ -11,14 +11,14 @@ const ContactCard = () => {
   const githubUrl = "github.com/LoganMilandin";
 
   return (
-    <Card sx={{ maxWidth: 400 }}>
+    <Card sx={{ width: "350px", height: "350px", p: 1, m: 1 }} elevation={3}>
       <CardMedia
         component="img"
         src={require("./profilePic.png")}
         style={{
           borderRadius: "50%",
-          height: "300px",
-          width: "300px",
+          height: "65%",
+          width: "65%",
           margin: "0 auto",
         }}
         alt="me"
