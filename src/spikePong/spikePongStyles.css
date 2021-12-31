@@ -4,9 +4,8 @@
 
 #tutorialScreen {
   background-color: black;
-  width: 80%;
-  margin: 0 auto;
   text-align: center;
+  display: in-line;
   border: 5px ridge red;
 }
 #canvas {
