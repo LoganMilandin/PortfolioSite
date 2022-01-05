@@ -11,20 +11,21 @@ const ContactCard = () => {
   const githubUrl = "github.com/LoganMilandin";
 
   return (
-    <Card sx={{ width: "350px", height: "350px", p: 1, m: 1 }} elevation={3}>
-      <CardMedia
-        component="img"
-        src={require("./profilePic.png")}
-        style={{
-          borderRadius: "50%",
-          height: "65%",
-          width: "65%",
-          margin: "0 auto",
-        }}
-        alt="me"
-      />
-      <CardContent>
-        <Stack direction="row" spacing={2}>
+    <div style={{ width: "400px", height: "400px" }}>
+      <Card elevation={0}>
+        <CardMedia
+          component="img"
+          src={require("./profilePic.png")}
+          style={{
+            borderRadius: "50%",
+            height: "65%",
+            width: "65%",
+            margin: "0 auto",
+          }}
+          alt="me"
+        />
+        <CardContent>
+          {/* <Stack direction="row" spacing={2}>
           <PhoneIcon />
           <Typography variant="body1" color="text.secondary">
             <a href={`tel:${phoneNumber}`}>{phoneNumber}</a>
@@ -47,9 +48,18 @@ const ContactCard = () => {
           <Typography variant="body1" color="text.secondary">
             <a href={`https://${githubUrl}`}>{githubUrl}</a>
           </Typography>
-        </Stack>
-      </CardContent>
-    </Card>
+        </Stack> */}
+          <Stack
+            sx={{
+              alignItems: "center",
+            }}
+          >
+            <Typography variant="h4">Logan Milandin</Typography>
+            <Typography variant="h6">Computer Science Student</Typography>
+          </Stack>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

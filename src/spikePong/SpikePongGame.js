@@ -1,6 +1,6 @@
 import { Stack } from "@mui/material";
 import { useRef, useEffect } from "react";
-import "./spikePongStyles.css";
+import classes from "./spikePongStyles.module.css";
 
 const SpikePongGame = () => {
   const canvas = useRef(null);
@@ -30,15 +30,15 @@ const SpikePongGame = () => {
 
   function startGameWithGravity() {
     gravityIsOn.current = true;
-    document.getElementById("tutorialScreen").style.display = "none";
-    document.getElementById("gameEnvironment").style.display = "inline";
+    document.getElementById(classes.tutorialScreen).style.display = "none";
+    document.getElementById(classes.gameEnvironment).style.display = "inline";
     animate();
   }
 
   function startGameWithoutGravity() {
     gravityIsOn.current = false;
-    document.getElementById("tutorialScreen").style.display = "none";
-    document.getElementById("gameEnvironment").style.display = "inline";
+    document.getElementById(classes.tutorialScreen).style.display = "none";
+    document.getElementById(classes.gameEnvironment).style.display = "inline";
     gravToggle.current.style.display = "none";
     animate();
   }
@@ -140,7 +140,6 @@ const SpikePongGame = () => {
     playerTwoScore.current = 0;
 
     document.addEventListener("keydown", function (e) {
-      console.log(e.which);
       switch (e.which) {
         //include the method for starting the game with the space bar here
         case 32:
@@ -440,48 +439,54 @@ const SpikePongGame = () => {
 
   return (
     <div>
-      <div id="tutorialScreen">
-        <p className="tutorialText"> Welcome to Spike Pong</p>
-        <p className="tutorialText" style={{ fontSize: "30px" }}>
+      <div id={classes.tutorialScreen}>
+        <p className={classes.tutorialText}> Welcome to Spike Pong</p>
+        <p className={classes.tutorialText} style={{ fontSize: "30px" }}>
           How to Play{" "}
         </p>
-        <p className="tutorialText" style={{ fontSize: "25px" }}>
+        <p className={classes.tutorialText} style={{ fontSize: "25px" }}>
           Player 1: Move the paddle with{" "}
-          <span className="key" style={{ margin: "0px 5px 0px 0px" }}>
+          <span className={classes.key} style={{ margin: "0px 5px 0px 0px" }}>
             W
           </span>
           (up) and{" "}
           <span
-            className="key"
+            className={classes.key}
             style={{ padding: "5px 13px 5px 13px", margin: "0px 5px 0px 0px" }}
           >
             S
           </span>
           (down) keys. Press{" "}
-          <span className="key" style={{ padding: "5px 12px 5px 12px" }}>
+          <span
+            className={classes.key}
+            style={{ padding: "5px 12px 5px 12px" }}
+          >
             D
           </span>{" "}
           to spike the ball.{" "}
         </p>
-        <p className="tutorialText" style={{ fontSize: "25px" }}>
+        <p className={classes.tutorialText} style={{ fontSize: "25px" }}>
           Player 2: Move the paddle with{" "}
-          <span className="key" style={{ padding: "2px 13px 10px 13px" }}>
+          <span
+            className={classes.key}
+            style={{ padding: "2px 13px 10px 13px" }}
+          >
             {"\u2191"}
           </span>{" "}
           and
           <span
-            className="key"
+            className={classes.key}
             style={{ padding: "2px 13px 10px 13px", margin: "0px 0px 0px 5px" }}
           >
             {"\u2193"}
           </span>{" "}
           arrow keys. Press{" "}
-          <span className="key" style={{ padding: "3px 8px 8px 8px" }}>
+          <span className={classes.key} style={{ padding: "3px 8px 8px 8px" }}>
             {"\u2190"}
           </span>{" "}
           to spike the ball.
         </p>
-        <p className="tutorialText" style={{ fontSize: "25px" }}>
+        <p className={classes.tutorialText} style={{ fontSize: "25px" }}>
           Rules: Players can only spike once every 5 seconds. Spikes can't be
           returned by another spike. The first player to reach 11 points wins
           the game.{" "}
@@ -492,28 +497,27 @@ const SpikePongGame = () => {
           style={{ margin: "0 auto" }}
         >
           <button
-            className="clickToPlay"
-            style={{ position: "relative" }}
+            className={classes.clickToPlay}
             onClick={startGameWithoutGravity}
           >
             PLAY WITHOUT GRAVITY
           </button>
           <button
-            className="clickToPlay"
-            style={{ position: "relative" }}
+            className={classes.clickToPlay}
             onClick={startGameWithGravity}
+            style={{ marginLeft: "20px" }}
           >
             PLAY WITH GRAVITY
           </button>
         </Stack>
       </div>
 
-      <div id="gameEnvironment">
+      <div id={classes.gameEnvironment}>
         <h1 id="player1">PLAYER ONE</h1>
         <h1 id="player2">PLAYER TWO</h1>
         <form>
           <input
-            id="gravityToggle"
+            id={classes.gravityToggle}
             ref={gravToggle}
             type="button"
             value="click to turn gravity off"
@@ -521,7 +525,7 @@ const SpikePongGame = () => {
           />
         </form>
         <canvas
-          id="canvas"
+          id={classes.canvas}
           ref={canvas}
           width="1000"
           height="600"

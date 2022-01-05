@@ -52,6 +52,7 @@ body {
 
 .clickToPlay {
   background-color: #55ce33;
+  margin: 20px 0px 10px 0px;
   font: 20px Arial;
   color: white;
 }

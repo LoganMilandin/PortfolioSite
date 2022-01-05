@@ -2,6 +2,8 @@ import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import SpikePong from "./spikePong/SpikePong";
 import Snake from "./snake/Snake";
 import Home from "./home/Home";
+import Climbing from "./climbing/Climbing";
+import Research from "./research/Research";
 import ClimbingVideos from "./climbing/ClimbingVideos";
 import {
   Drawer,
@@ -40,6 +42,7 @@ const routes = {
 };
 function App() {
   const smallScreen = window.screen.width < 500;
+  console.log(window.screen.width);
   const [navDrawerOpen, setNavDrawerOpen] = useState(!smallScreen);
   const [gamesDropdownOpen, setGamesDropDownOpen] = useState(false);
   const [hobbiesDropdownOpen, setHobbiesDropDownOpen] = useState(false);
@@ -106,7 +109,6 @@ function App() {
         <Divider />
         <List>
           <MenuItem
-            button
             component={Link}
             to="/"
             onClick={() => handleMenuItemSelected("Home")}
@@ -116,7 +118,6 @@ function App() {
           </MenuItem>
 
           <MenuItem
-            button
             component={Link}
             to={routes.research.path}
             onClick={() => handleMenuItemSelected("Research")}
@@ -125,7 +126,6 @@ function App() {
             <ListItemText primary="Research" />
           </MenuItem>
           <MenuItem
-            button
             component={Link}
             to={routes.teaching.path}
             onClick={() => handleMenuItemSelected("Teaching")}
@@ -134,7 +134,6 @@ function App() {
             <ListItemText primary="Teaching" />
           </MenuItem>
           <MenuItem
-            button
             component={Link}
             to={routes.coursework.path}
             onClick={() => handleMenuItemSelected("Coursework")}
@@ -143,14 +142,13 @@ function App() {
             <ListItemText primary="Coursework" />
           </MenuItem>
           <Divider />
-          <MenuItem button onClick={handleGamesDropdownChange}>
+          <MenuItem onClick={handleGamesDropdownChange}>
             <ListItemText primary="Games" />
             {gamesDropdownOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
           </MenuItem>
           <Collapse in={gamesDropdownOpen}>
             <List disablePadding sx={{ pl: 3 }}>
               <MenuItem
-                button
                 component={Link}
                 to={routes.pong.path}
                 onClick={() => handleMenuItemSelected("Spike Pong")}
@@ -159,7 +157,6 @@ function App() {
                 <ListItemText primary="Spike Pong" />
               </MenuItem>
               <MenuItem
-                button
                 component={Link}
                 to={routes.snake.path}
                 onClick={() => handleMenuItemSelected("Snake")}
@@ -170,35 +167,27 @@ function App() {
             </List>
           </Collapse>
 
-          <ListItem button onClick={handleHobbiesDropdownChange}>
+          <ListItem onClick={handleHobbiesDropdownChange}>
             <ListItemText primary="Hobbies" />
             {hobbiesDropdownOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
           </ListItem>
           <Collapse in={hobbiesDropdownOpen}>
             <List disablePadding sx={{ pl: 3 }}>
               <MenuItem
-                button
                 component={Link}
                 to={routes.climbing.path}
                 onClick={() => handleMenuItemSelected("Climbing")}
                 selected={appBarHeading == "Climbing"}
               >
-                <ListItemText
-                  primary="Climbing"
-                  onClick={handleNavDrawerChange}
-                />
+                <ListItemText primary="Climbing" />
               </MenuItem>
               <MenuItem
-                button
                 component={Link}
                 to={routes.running.path}
                 onClick={() => handleMenuItemSelected("Running")}
                 selected={appBarHeading == "Running"}
               >
-                <ListItemText
-                  primary="Running"
-                  onClick={handleNavDrawerChange}
-                />
+                <ListItemText primary="Running" />
               </MenuItem>
             </List>
           </Collapse>
@@ -232,8 +221,12 @@ function App() {
         <Routes>
           <Route path={routes.pong.path} element={<SpikePong />} />
           <Route path={routes.snake.path} element={<Snake />} />
-          <Route path="/" element={<Home />} />
-          <Route path={routes.climbing.path} element={<ClimbingVideos />} />
+          <Route path={routes.research.path} element={<Research />} />
+          <Route path="/" element={<Home smallScreen={smallScreen} />} />
+          <Route
+            path={routes.climbing.path}
+            element={<Climbing smallScreen={smallScreen} />}
+          />
         </Routes>
       </div>
     </BrowserRouter>
