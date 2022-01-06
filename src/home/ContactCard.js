@@ -1,64 +1,56 @@
-import { Card, CardContent, CardMedia, Typography, Stack } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Stack,
+  IconButton,
+} from "@mui/material";
+import { Image } from "mui-image";
 import EmailIcon from "@mui/icons-material/Email";
 import PhoneIcon from "@mui/icons-material/Phone";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
-const ContactCard = () => {
+const ContactCard = (props) => {
   const phoneNumber = "206-335-3057";
   const email = "mi1andin@cs.washington.edu";
   const linkedInUrl = "linkedin.com/in/LoganMilandin";
   const githubUrl = "github.com/LoganMilandin";
+  const instagramUrl = "instagram.com/lmilandin/";
 
   return (
     <div style={{ width: "400px", height: "400px" }}>
-      <Card elevation={0}>
-        <CardMedia
-          component="img"
+      <Stack sx={{ alignItems: "center" }}>
+        {" "}
+        <Image
           src={require("./profilePic.png")}
-          style={{
-            borderRadius: "50%",
-            height: "65%",
-            width: "65%",
-            margin: "0 auto",
-          }}
-          alt="me"
+          height="60%"
+          width="60%"
+          duration={500}
+          sx={{ borderRadius: "50%" }}
         />
-        <CardContent>
-          {/* <Stack direction="row" spacing={2}>
-          <PhoneIcon />
-          <Typography variant="body1" color="text.secondary">
-            <a href={`tel:${phoneNumber}`}>{phoneNumber}</a>
-          </Typography>
-        </Stack>
+        <Typography variant="h4">Logan Milandin</Typography>
+        <Typography variant="h6">Computer Science Student</Typography>
         <Stack direction="row" spacing={2}>
-          <EmailIcon />
-          <Typography variant="body1" color="text.secondary">
-            <a href={`mailto:${email}`}>{email}</a>
-          </Typography>
+          <IconButton href={`tel:${phoneNumber}`}>
+            <PhoneIcon />
+          </IconButton>
+          <IconButton href={`mailto:${email}`}>
+            <EmailIcon />
+          </IconButton>
+          <IconButton href={`https://${linkedInUrl}`} target="_blank">
+            <LinkedInIcon />
+          </IconButton>
+          <IconButton href={`https://${githubUrl}`} target="_blank">
+            <GitHubIcon />
+          </IconButton>
+          <IconButton href={`https://${instagramUrl}`} target="_blank">
+            <InstagramIcon />
+          </IconButton>
         </Stack>
-        <Stack direction="row" spacing={2}>
-          <LinkedInIcon />
-          <Typography variant="body1" color="text.secondary">
-            <a href={`https://${linkedInUrl}`}>{linkedInUrl}</a>
-          </Typography>
-        </Stack>
-        <Stack direction="row" spacing={2}>
-          <GitHubIcon />
-          <Typography variant="body1" color="text.secondary">
-            <a href={`https://${githubUrl}`}>{githubUrl}</a>
-          </Typography>
-        </Stack> */}
-          <Stack
-            sx={{
-              alignItems: "center",
-            }}
-          >
-            <Typography variant="h4">Logan Milandin</Typography>
-            <Typography variant="h6">Computer Science Student</Typography>
-          </Stack>
-        </CardContent>
-      </Card>
+      </Stack>
     </div>
   );
 };
