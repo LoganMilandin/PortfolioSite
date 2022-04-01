@@ -1,8 +1,10 @@
 import { Stack, Box, Paper, Typography } from "@mui/material";
+import PaperWrapper from "../PaperWrapper/PaperWrapper";
+
 const Research = () => {
   return (
     <Stack>
-      <Paper sx={{ p: 2, m: 2 }} elevation={3}>
+      <PaperWrapper elevation={3}>
         <Typography variant="h4">My Background</Typography>
         <Typography>
           Like many researchers, I started doing research out of a desire to
@@ -48,13 +50,13 @@ const Research = () => {
           in larger quantities. Below is a writeup of some recent findings by my
           colleague and I.
         </Typography>
-      </Paper>
-      <Paper sx={{ p: 2, m: 2 }} elevation={3}>
+      </PaperWrapper>
+      <PaperWrapper elevation={3}>
         <iframe
           style={{ height: "100vh", width: "100%" }}
           src={"https://thatonegoat.github.io/sidewalk-cv-2021/"}
         />
-      </Paper>
+      </PaperWrapper>
     </Stack>
   );
 };

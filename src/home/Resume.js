@@ -1,12 +1,11 @@
 import { Stack, Box, Paper, Typography } from "@mui/material";
+import PaperWrapper from "../PaperWrapper/PaperWrapper";
 
 const Resume = () => {
   return (
     <div>
       {" "}
-      <Paper sx={{ m: 2, p: 2 }} elevation={3}>
-        hello
-      </Paper>
+      <PaperWrapper elevation={3}>hello</PaperWrapper>
     </div>
   );
 };

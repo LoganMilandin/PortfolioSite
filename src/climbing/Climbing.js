@@ -1,9 +1,10 @@
 import ClimbingVideos from "./ClimbingVideos";
 import { Stack, Box, Paper, Typography } from "@mui/material";
+import PaperWrapper from "../PaperWrapper/PaperWrapper";
 
 const Climbing = (props) => {
   return (
-    <Paper elevation={3} sx={{ m: 2, p: 2 }}>
+    <PaperWrapper elevation={3}>
       <Stack
         direction={props.smallScreen ? "column" : "row"}
         sx={{ alignItems: "center" }}
@@ -29,7 +30,7 @@ const Climbing = (props) => {
         </div>
         <ClimbingVideos />
       </Stack>
-    </Paper>
+    </PaperWrapper>
   );
 };
 

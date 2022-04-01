@@ -1,10 +1,11 @@
 import SpikePongGame from "./SpikePongGame";
 import { Stack, Box, Paper, Typography } from "@mui/material";
+import PaperWrapper from "../PaperWrapper/PaperWrapper";
 
-const Home = () => {
+const SpikePong = () => {
   return (
     <Stack>
-      <Paper sx={{ m: 1, width: "70vw" }} elevation={3}>
+      <PaperWrapper elevation={3}>
         <Typography>
           words words words words words words words words words words words
           words words words words words words words words words words words
@@ -17,8 +18,8 @@ const Home = () => {
           words words words words words words words words words words words
           words words words words words words words words words
         </Typography>
-      </Paper>
-      <Paper sx={{ m: 1, p: 1, width: "70vw" }} elevation={3}>
+      </PaperWrapper>
+      <PaperWrapper elevation={3}>
         <Stack alignItems="center">
           {" "}
           <SpikePongGame />
@@ -27,9 +28,9 @@ const Home = () => {
             mobile
           </Typography>
         </Stack>
-      </Paper>
+      </PaperWrapper>
     </Stack>
   );
 };
 
-export default Home;
+export default SpikePong;
