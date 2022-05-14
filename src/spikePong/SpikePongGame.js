@@ -513,23 +513,27 @@ const SpikePongGame = () => {
       </div>
 
       <div id={classes.gameEnvironment}>
-        <h1 id="player1">PLAYER ONE</h1>
-        <h1 id="player2">PLAYER TWO</h1>
-        <form>
-          <input
-            id={classes.gravityToggle}
-            ref={gravToggle}
-            type="button"
-            value="click to turn gravity off"
-            onClick={toggleGravity}
-          />
-        </form>
+        <Stack direction="row" justifyContent="space-between">
+          <h1 id="player1">PLAYER ONE</h1>
+          <h1 id="player2">PLAYER TWO</h1>
+        </Stack>
+        <Stack direction="row" justifyContent="space-around">
+          <form>
+            <input
+              id={classes.gravityToggle}
+              ref={gravToggle}
+              type="button"
+              value="click to turn gravity off"
+              onClick={toggleGravity}
+            />
+          </form>
+        </Stack>
         <canvas
           id={classes.canvas}
           ref={canvas}
           width="1000"
           height="600"
-          style={{ margin: "28.5px 0px 0px 183px" }}
+          style={{ marginTop: "5px" }}
         ></canvas>
       </div>
     </div>

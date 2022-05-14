@@ -1,5 +1,5 @@
 import SpikePongGame from "./SpikePongGame";
-import { Stack, Box, Paper, Typography } from "@mui/material";
+import { Stack, Box, Paper, Typography, Link } from "@mui/material";
 import PaperWrapper from "../PaperWrapper/PaperWrapper";
 
 const SpikePong = () => {
@@ -7,16 +7,16 @@ const SpikePong = () => {
     <Stack>
       <PaperWrapper elevation={3}>
         <Typography>
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words
+          This is the first project I ever made. I wrote it in a standalone HTML
+          document during senior year of high school, but later React-ified it
+          to embed it in this site.{" "}
+          <Link
+            href="https://github.com/LoganMilandin/SpikePong"
+            target="_blank"
+          >
+            Here
+          </Link>
+          's the repo with the original (it's messy). Enjoy!
         </Typography>
       </PaperWrapper>
       <PaperWrapper elevation={3}>
@@ -24,8 +24,7 @@ const SpikePong = () => {
           {" "}
           <SpikePongGame />
           <Typography>
-            Note: you need a keyboard to play, which means this won't work on
-            mobile
+            Note: you need a keyboard to play, so this won't work on mobile
           </Typography>
         </Stack>
       </PaperWrapper>

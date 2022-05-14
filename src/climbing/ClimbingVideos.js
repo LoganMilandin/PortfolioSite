@@ -124,7 +124,12 @@ const ClimbingVideos = () => {
                       overflow: "hidden",
                     }}
                   >
-                    <video height={"100%"} controls id={activeIndex.toString()}>
+                    <video
+                      height={"100%"}
+                      controls
+                      id={activeIndex.toString()}
+                      autoPlay={true}
+                    >
                       <source
                         src={video.url}
                         key={video.name}

@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 
-import { Stack, Box, Paper, Typography } from "@mui/material";
+import { Stack, Box, Paper, Typography, Link } from "@mui/material";
 import PaperWrapper from "../PaperWrapper/PaperWrapper";
 
 const Snake = () => {
@@ -12,16 +12,14 @@ const Snake = () => {
     <Stack>
       <PaperWrapper elevation={3}>
         <Typography>
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words words words
-          words words words words words words words words words
+          This is a fun little implementation of the classic Snake game, written
+          in Python using Tkinter. I built it several years ago when I was first
+          learning Python, to get practice with the OOP constructs available
+          therein.{" "}
+          <Link href="https://github.com/LoganMilandin/Snake" target="_blank">
+            Here
+          </Link>
+          's the code repo. Enjoy!
         </Typography>
       </PaperWrapper>
       <PaperWrapper elevation={3}>
@@ -35,8 +33,7 @@ const Snake = () => {
             ref={gameFrame}
           ></iframe>
           <Typography>
-            Note: you need a keyboard to play, which means this won't work on
-            mobile
+            Note: you need a keyboard to play, so this won't work on mobile
           </Typography>
         </Stack>
       </PaperWrapper>

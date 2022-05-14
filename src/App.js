@@ -87,6 +87,18 @@ function App() {
               path={routes.climbing.path}
               element={<Climbing smallScreen={smallScreen} />}
             />
+            <Route
+              path={routes.teaching.path}
+              element={<div>coming soon!</div>}
+            />
+            <Route
+              path={routes.coursework.path}
+              element={<div>coming soon!</div>}
+            />
+            <Route
+              path={routes.running.path}
+              element={<div>coming soon!</div>}
+            />
           </Routes>
         </div>
       </BrowserRouter>

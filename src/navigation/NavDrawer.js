@@ -36,14 +36,23 @@ const NavDrawer = (props) => {
   const location = useLocation();
 
   const handleGamesDropdownChange = () => {
-    if (!(location.pathname == "/spikepong" || location.pathname == "/snake")) {
+    console.log(gamesDropdownOpen);
+    if (
+      !(
+        (location.pathname == "/spikepong" || location.pathname == "/snake") &&
+        gamesDropdownOpen
+      )
+    ) {
       setGamesDropDownOpen(!gamesDropdownOpen);
     }
   };
 
   const handleHobbiesDropdownChange = () => {
     if (
-      !(location.pathname == "/climbing" || location.pathname == "/running")
+      !(
+        (location.pathname == "/climbing" || location.pathname == "/running") &&
+        hobbiesDropdownOpen
+      )
     ) {
       setHobbiesDropDownOpen(!hobbiesDropdownOpen);
     }

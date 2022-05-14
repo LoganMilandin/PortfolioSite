@@ -32,7 +32,7 @@ const Home = (props) => {
           </Typography>
         </Stack>
       </PaperWrapper>
-      <Resume />
+      {/* <Resume /> */}
     </Stack>
   );
 };
