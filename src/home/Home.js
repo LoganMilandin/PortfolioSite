@@ -21,11 +21,10 @@ const Home = (props) => {
             included some pages about my hobbies so anyone who finds themself
             here (probably recruiters) can learn about me. I'm working on a
             master's degree in computer science, which I'm finishing in Spring
-            2022, and I do some research and TA work for the Allen school. I
-            also did a minor in experimental physics. My primary career focus is
-            machine learning at the moment, but I'm also interested in
-            algorithms and complexity. I like to{" "}
-            {<Link href={"running"}>run</Link>} and{" "}
+            2023, and I do some research and TA for the Allen school. I also did
+            a minor in experimental physics. My career focus is machine learning
+            at the moment, but I'm also interested in algorithms and complexity.
+            I like to {<Link href={"running"}>run</Link>} and{" "}
             {<Link href={"climbing"}>rock climb</Link>}, and I try to hike a few
             times a year. I like to read and watch sci-fi and fantasy, and I
             watch anime. Click an item in the left menu to learn more!
