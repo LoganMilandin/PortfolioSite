@@ -16,8 +16,8 @@ const Climbing = (props) => {
             <Typography>
               I started climbing just before the pandemic and am now addicted. I
               like to boulder as well as climb bigger walls with a rope. These
-              are some videos of the harder boulders I've done since I started,
-              which I filmed to help me see and document my progress.
+              are videos of some of the harder boulders I've done, which I
+              filmed to help me see and document my progress.
             </Typography>
           </Stack>
         </div>

@@ -23,9 +23,7 @@ const SpikePong = () => {
         <Stack alignItems="center">
           {" "}
           <SpikePongGame />
-          <Typography>
-            Note: you need a keyboard to play, so this won't work on mobile
-          </Typography>
+          <Typography>Note: you need a keyboard to play</Typography>
         </Stack>
       </PaperWrapper>
     </Stack>
