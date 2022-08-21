@@ -27,10 +27,9 @@ const Snake = () => {
           {" "}
           <iframe
             frameborder="0"
-            width="80%"
-            height="600px"
+            width="90%"
+            height="800px"
             src="https://replit.com/@Logmilly/Snake?embed=true&lite=true"
-            // src="https://replit.com/@ritza/demo-embed?embed=true&lite=true"
             ref={gameFrame}
           ></iframe>
           <Typography>Note: you need a keyboard to play</Typography>

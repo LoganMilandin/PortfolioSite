@@ -31,6 +31,8 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import MyAppBar from "./navigation/MyAppBar";
 import NavDrawer from "./navigation/NavDrawer";
+import Coursework from "./coursework/Coursework";
+import Teaching from "./teaching/Teaching";
 
 const routes = {
   research: { path: "/research", header: "Research" },
@@ -87,14 +89,8 @@ function App() {
               path={routes.climbing.path}
               element={<Climbing smallScreen={smallScreen} />}
             />
-            <Route
-              path={routes.teaching.path}
-              element={<div>coming soon!</div>}
-            />
-            <Route
-              path={routes.coursework.path}
-              element={<div>coming soon!</div>}
-            />
+            <Route path={routes.teaching.path} element={<Teaching />} />
+            <Route path={routes.coursework.path} element={<Coursework />} />
             <Route
               path={routes.running.path}
               element={<div>coming soon!</div>}
